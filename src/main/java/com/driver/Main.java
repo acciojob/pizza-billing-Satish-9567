@@ -5,7 +5,7 @@ public class Main {
     Scanner sc=new Scanner(System.in);
     String str;
     DeluxePizza dp = new DeluxePizza(true);
-    //System.out.println(dp.getPrice());
+    System.out.println(dp.getPrice());
     dp.addTakeaway();
     dp.addExtraCheese();
     System.out.println("Click y for PaperBag");
