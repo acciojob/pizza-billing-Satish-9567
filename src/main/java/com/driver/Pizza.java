@@ -2,22 +2,30 @@ package com.driver;
 
 public class Pizza {
 
-    private int price;
+   private int price;
     private Boolean isVeg;
     private String bill;
-
+    private final int  cheese=80;
+    private final int vegTopping=70;
+    private final int nonVegTopping=120;
+    private final int bag=20;
+    private boolean cheeseF=false;
+    private boolean toppingF=false;
+    private boolean bagF=false;
+    private boolean billF=false;
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
-        // your code goes here
-        this.bill=new String();
-        if(isVeg){
-            this.price=300;
-            bill=(String)(bill+"Base Price Of The Pizza: 300\n");
-        }else{
-            this.price=400;
-            bill=(String)(bill+"Base Price Of The Pizza: 400\n");
+        if(isVeg)
+        {
+            price=300;
         }
-        
+        else
+        {
+            price=400;
+        }
+
+        this.bill="Base Price Of The Pizza: "+price+"\n";
+        // your code goes here
     }
 
     public int getPrice(){
@@ -26,30 +34,41 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        this.price+=80;
-        this.bill=(String)(this.bill+"Extra Cheese Added: 80\n");
+        if(cheeseF==false)
+        {
+            cheeseF=true;
+            price+=80;
+            bill+="Extra Cheese Added: "+cheese+"\n";
+        }
     }
 
-    public void addExtraToppings(){
+    public void addExtraToppings() {
         // your code goes here
-        if(isVeg){
-            this.price+=70;
-            this.bill=(String)(this.bill+"Extra Toppings Added: 70\n");
-        }else{
-            this.price+=120;
-            this.bill=(String)(this.bill+"Extra Toppings Added: 120\n");
+        if(toppingF==false)
+        {
+            toppingF=true;
+            int tempTop= isVeg ? vegTopping : nonVegTopping;
+            price+=tempTop;
+            bill+="Extra Toppings Added: "+tempTop+"\n";
         }
     }
 
     public void addTakeaway(){
         // your code goes here
-        this.price+=20;
-        this.bill=(String)(this.bill+"Paperbag Added: 20\n");
+        if(bagF==false)
+        {
+            bagF=true;
+            price+=bag;
+            bill+="Paperbag Added: "+bag+"\n";
+        }
     }
 
     public String getBill(){
-        // your code goes here
-        this.bill=(String)(this.bill+"Total Price:"+this.price);
-        return this.bill;
+        if(billF==false)
+        {
+            bill+="Total Price: "+price+"\n";
+            billF=true;
+        }
+        return bill;
     }
 }
